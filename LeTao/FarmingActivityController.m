@@ -27,6 +27,8 @@
     
     [self performSelector:@selector(refreshTest) withObject:self];
     [self performSelector:@selector(extendWidthTest) withObject:self];
+    
+    //[self initData];
 }
 
 - (void)didReceiveMemoryWarning {

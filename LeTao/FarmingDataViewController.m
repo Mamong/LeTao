@@ -7,12 +7,13 @@
 //
 
 #import "FarmingDataViewController.h"
+#import "DataRequest.h"
 
 #import "UUChart/UUChart.h"
 #import "ChartViewDataSource.h"
 
 @interface FarmingDataViewController ()
-@property(nonatomic,strong) NSArray *farmingDatas;
+@property(nonatomic,strong) NSMutableArray *farmingDatas;
 @end
 
 @implementation FarmingDataViewController
@@ -38,12 +39,45 @@
                                                  @{@"x":@"3",@"y":@"33"},@{@"x":@"4",@"y":@"13"},@{@"x":@"5",@"y":@"77"},
                                                  @{@"x":@"6",@"y":@"11"},@{@"x":@"7",@"y":@"2"}]}]}
                      ];
+    //[self initData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)initData
+{
+    [self loadData];
+}
+
+- (void)loadData
+{
+    [DataRequest getIlluminationDataWithParams:nil success:^(IlluminationModel *illu) {
+        if (illu) {
+            //光照数据加入farmingDatas
+            
+            //刷新tableview
+            [self.tableView reloadData];
+        }
+    } failure:^(StatusModel *status) {
+        
+    }];
+    
+    
+    [DataRequest getHumidityDataWithParams:nil success:^(HumidityModel *humidity) {
+        if (humidity){
+            //湿度数据加入farmingDatas
+            
+            //刷新tableview
+            [self.tableView reloadData];
+        }
+    } failure:^(StatusModel *status) {
+        
+    }];
+}
+
 
 #pragma mark - Table view data source
 
