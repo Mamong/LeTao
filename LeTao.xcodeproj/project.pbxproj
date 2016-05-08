@@ -33,6 +33,7 @@
 		048B5C781CDF0C0800960FC6 /* HumidityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C771CDF0C0800960FC6 /* HumidityModel.m */; };
 		048B5C7C1CDF0ECD00960FC6 /* LTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C7B1CDF0ECD00960FC6 /* LTNetworkManager.m */; };
 		048B5C7F1CDF1DDF00960FC6 /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C7E1CDF1DDF00960FC6 /* ResponseModel.m */; };
+		04B07A241CDF6DED00E62C53 /* IlluminationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B07A231CDF6DED00E62C53 /* IlluminationItem.m */; };
 		04E0BD311CBB2F7900675AD8 /* AVPlayerDemoPlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0BD301CBB2F7900675AD8 /* AVPlayerDemoPlaybackViewController.m */; };
 		04E0BD341CBB2FA100675AD8 /* AVPlayerDemoPlaybackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0BD331CBB2FA100675AD8 /* AVPlayerDemoPlaybackView.m */; };
 		04E554BA1CB8AEE2001060B7 /* ZDDStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E554B91CB8AEE2001060B7 /* ZDDStepper.m */; };
@@ -99,6 +100,8 @@
 		048B5C7B1CDF0ECD00960FC6 /* LTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTNetworkManager.m; sourceTree = "<group>"; };
 		048B5C7D1CDF1DDF00960FC6 /* ResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseModel.h; sourceTree = "<group>"; };
 		048B5C7E1CDF1DDF00960FC6 /* ResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseModel.m; sourceTree = "<group>"; };
+		04B07A221CDF6DED00E62C53 /* IlluminationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IlluminationItem.h; sourceTree = "<group>"; };
+		04B07A231CDF6DED00E62C53 /* IlluminationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IlluminationItem.m; sourceTree = "<group>"; };
 		04E0BD2F1CBB2F7900675AD8 /* AVPlayerDemoPlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackViewController.h; sourceTree = "<group>"; };
 		04E0BD301CBB2F7900675AD8 /* AVPlayerDemoPlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoPlaybackViewController.m; sourceTree = "<group>"; };
 		04E0BD321CBB2FA100675AD8 /* AVPlayerDemoPlaybackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackView.h; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 				048B5C6F1CDF0A3300960FC6 /* IlluminationModel.m */,
 				048B5C761CDF0C0800960FC6 /* HumidityModel.h */,
 				048B5C771CDF0C0800960FC6 /* HumidityModel.m */,
+				04B07A221CDF6DED00E62C53 /* IlluminationItem.h */,
+				04B07A231CDF6DED00E62C53 /* IlluminationItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				040C9C1D1CB9FA81006BDA83 /* UUBar.m in Sources */,
 				040C9C201CB9FA81006BDA83 /* UUChartConst.m in Sources */,
 				040C9C301CBA34A1006BDA83 /* SCGridCell.m in Sources */,
+				04B07A241CDF6DED00E62C53 /* IlluminationItem.m in Sources */,
 				040C9C221CB9FA81006BDA83 /* UULineChart.m in Sources */,
 				040C9C331CBA3680006BDA83 /* FarmingActivityController.m in Sources */,
 				040C9C2F1CBA34A1006BDA83 /* SCGridTable.m in Sources */,

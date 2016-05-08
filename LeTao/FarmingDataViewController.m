@@ -14,6 +14,7 @@
 
 @interface FarmingDataViewController ()
 @property(nonatomic,strong) NSMutableArray *farmingDatas;
+@property(nonatomic,strong) NSMutableArray *illuDatas;
 @end
 
 @implementation FarmingDataViewController
@@ -49,6 +50,8 @@
 
 - (void)initData
 {
+    _farmingDatas = [NSMutableArray arrayWithCapacity:3];
+    _illuDatas = [NSMutableArray arrayWithCapacity:2];
     [self loadData];
 }
 
@@ -57,7 +60,16 @@
     [DataRequest getIlluminationDataWithParams:nil success:^(IlluminationModel *illu) {
         if (illu) {
             //光照数据加入farmingDatas
-            
+            NSArray *items = illu.items;
+            NSMutableArray *lows = [NSMutableArray arrayWithCapacity:1];
+            NSMutableArray *highs = [NSMutableArray arrayWithCapacity:1];
+            for (IlluminationItem *item in items) {
+                [lows addObject:@{@"x":item.day,@"y":item.low}];
+                [highs addObject:@{@"x":item.day,@"y":item.high}];
+            }
+            [_illuDatas addObject:lows];
+            [_illuDatas addObject:highs];
+            [_farmingDatas addObject:@{@"items":_illuDatas}];
             //刷新tableview
             [self.tableView reloadData];
         }
