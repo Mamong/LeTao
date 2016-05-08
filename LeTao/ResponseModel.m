@@ -9,6 +9,5 @@
 #import "ResponseModel.h"
 
 @implementation ResponseModel
-@property (strong, nonatomic) StatusModel* status;
-@property (strong, nonatomic) NSDictionary<Optional>* result;
+
 @end
