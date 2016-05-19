@@ -12,7 +12,6 @@
 
 @interface IlluminationModel : JSONModel
 
-@property(nonatomic,strong)NSString *dataType;//illu or humidity
-@property(nonatomic,strong)NSArray<IlluminationItem*> *items;
+@property(nonatomic,strong)NSArray<IlluminationItem> *illitems;
 
 @end

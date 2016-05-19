@@ -8,10 +8,15 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol IlluminationItem <NSObject>
+
+
+@end
+
 @interface IlluminationItem : JSONModel
 
-@property(nonatomic,strong)NSString *low;
-@property(nonatomic,strong)NSString *high;
-@property(nonatomic,strong)NSString *day;
+@property(nonatomic,strong)NSString *lowwendu;
+@property(nonatomic,strong)NSString *highwendu;
+@property(nonatomic,strong)NSString *date;
 
 @end

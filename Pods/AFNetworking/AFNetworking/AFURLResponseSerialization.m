@@ -249,6 +249,13 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     BOOL isSpace = [data isEqualToData:[NSData dataWithBytes:" " length:1]];
     if (data.length > 0 && !isSpace) {
         responseObject = [NSJSONSerialization JSONObjectWithData:data options:self.readingOptions error:&serializationError];
+//        NSData *jsonData = data;
+//        const unsigned char *ptr = [data bytes];
+//        
+//        for(int i=0; i<[data length]; ++i) {
+//            unsigned char c = *ptr++;
+//            NSLog(@"char=%c hex=%x", c, c);
+//        }
     } else {
         return nil;
     }

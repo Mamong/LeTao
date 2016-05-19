@@ -28,19 +28,19 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _farmingDatas = @[@{@"items":@[
-                                  @{@"points":@[@{@"x":@"0",@"y":@"34"},@{@"x":@"1",@"y":@"56"},@{@"x":@"2",@"y":@"32"},
-                                              @{@"x":@"3",@"y":@"54"},@{@"x":@"4",@"y":@"13"},@{@"x":@"5",@"y":@"67"},
-                                              @{@"x":@"6",@"y":@"22"},@{@"x":@"7",@"y":@"44"}]},
-                                  @{@"points":@[@{@"x":@"0",@"y":@"53"},@{@"x":@"1",@"y":@"29"},@{@"x":@"2",@"y":@"65"},
-                                              @{@"x":@"3",@"y":@"45"},@{@"x":@"4",@"y":@"27"},@{@"x":@"5",@"y":@"13"},
-                                                @{@"x":@"6",@"y":@"60"},@{@"x":@"7",@"y":@"89"}]}]},
-                      @{@"items":@[
-                                 @{@"points":@[@{@"x":@"0",@"y":@"12"},@{@"x":@"1",@"y":@"90"},@{@"x":@"2",@"y":@"67"},
-                                                 @{@"x":@"3",@"y":@"33"},@{@"x":@"4",@"y":@"13"},@{@"x":@"5",@"y":@"77"},
-                                                 @{@"x":@"6",@"y":@"11"},@{@"x":@"7",@"y":@"2"}]}]}
-                     ];
-    //[self initData];
+//    _farmingDatas = @[@{@"items":@[
+//                                  @{@"points":@[@{@"x":@"0",@"y":@"34"},@{@"x":@"1",@"y":@"56"},@{@"x":@"2",@"y":@"32"},
+//                                              @{@"x":@"3",@"y":@"54"},@{@"x":@"4",@"y":@"13"},@{@"x":@"5",@"y":@"67"},
+//                                              @{@"x":@"6",@"y":@"22"},@{@"x":@"7",@"y":@"44"}]},
+//                                  @{@"points":@[@{@"x":@"0",@"y":@"53"},@{@"x":@"1",@"y":@"29"},@{@"x":@"2",@"y":@"65"},
+//                                              @{@"x":@"3",@"y":@"45"},@{@"x":@"4",@"y":@"27"},@{@"x":@"5",@"y":@"13"},
+//                                                @{@"x":@"6",@"y":@"60"},@{@"x":@"7",@"y":@"89"}]}]},
+//                      @{@"items":@[
+//                                 @{@"points":@[@{@"x":@"0",@"y":@"12"},@{@"x":@"1",@"y":@"90"},@{@"x":@"2",@"y":@"67"},
+//                                                 @{@"x":@"3",@"y":@"33"},@{@"x":@"4",@"y":@"13"},@{@"x":@"5",@"y":@"77"},
+//                                                 @{@"x":@"6",@"y":@"11"},@{@"x":@"7",@"y":@"2"}]}]}
+//                     ];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,12 +60,12 @@
     [DataRequest getIlluminationDataWithParams:nil success:^(IlluminationModel *illu) {
         if (illu) {
             //光照数据加入farmingDatas
-            NSArray *items = illu.items;
+            NSArray *items = illu.illitems;
             NSMutableArray *lows = [NSMutableArray arrayWithCapacity:1];
             NSMutableArray *highs = [NSMutableArray arrayWithCapacity:1];
             for (IlluminationItem *item in items) {
-                [lows addObject:@{@"x":item.day,@"y":item.low}];
-                [highs addObject:@{@"x":item.day,@"y":item.high}];
+                [lows addObject:@{@"x":item.date,@"y":item.lowwendu}];
+                [highs addObject:@{@"x":item.date,@"y":item.highwendu}];
             }
             [_illuDatas addObject:lows];
             [_illuDatas addObject:highs];
@@ -98,7 +98,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [_farmingDatas count]>0?1:0;
 }
 
 

@@ -16,7 +16,7 @@
     static LTNetworkManager *_manager = nil;
     dispatch_once(&onceToken, ^{
         
-        NSURL *baseURL = [NSURL URLWithString:@"http://139.129.51.132/zzz/"];
+        NSURL *baseURL = [NSURL URLWithString:@"http://139.129.51.132"];
         
         _manager = [[LTNetworkManager alloc] init];
         
@@ -24,6 +24,7 @@
         
         _manager = [[LTNetworkManager alloc] initWithBaseURL:baseURL
                                         sessionConfiguration:config];
+        //_manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         _manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
         
     });

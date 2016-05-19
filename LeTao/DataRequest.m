@@ -12,7 +12,7 @@
 #import "IlluminationModel.h"
 #import "HumidityModel.h"
 
-#define  ILLUMINATION_GET_REQUEST_URL                      @"/data/illumination"
+#define  ILLUMINATION_GET_REQUEST_URL                      @"/zzz/hwd.php"
 
 #define  HUMIDITY_GET_REQUEST_URL                      @"/data/humidity"
 
