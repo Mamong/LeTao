@@ -14,6 +14,8 @@
 {
     if (self = [super init]) {
         _dictionary = dictionary;
+        self.chartRange = CGRangeMake(100, 0);
+        self.chartHighlightRange = CGRangeMake(25, 75);
     }
     return self;
 }
@@ -63,7 +65,7 @@
 - (CGRange)chartRange:(UUChart *)chart
 {
 
-    return CGRangeMake(100, 0);
+    return self.chartRange;
     //return CGRangeZero;
 }
 
@@ -72,7 +74,7 @@
 //标记数值区域
 - (CGRange)chartHighlightRangeInLine:(UUChart *)chart
 {
-    return CGRangeMake(25, 75);
+    return self.chartHighlightRange;
     //return CGRangeZero;
 }
 

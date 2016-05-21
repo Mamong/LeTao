@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface StatusModel : NSObject
+@interface StatusModel : JSONModel
 @property (nonatomic, assign) NSInteger code;
 @property (strong, nonatomic) NSString* msg;
 @end

@@ -15,6 +15,8 @@
 @interface FarmingDataViewController ()
 @property(nonatomic,strong) NSMutableArray *farmingDatas;
 @property(nonatomic,strong) NSMutableArray *illuDatas;
+@property(nonatomic,strong) NSMutableArray *humiDatas;
+
 @end
 
 @implementation FarmingDataViewController
@@ -52,35 +54,30 @@
 {
     _farmingDatas = [NSMutableArray arrayWithCapacity:3];
     _illuDatas = [NSMutableArray arrayWithCapacity:2];
+    _humiDatas = [NSMutableArray arrayWithCapacity:1];
     [self loadData];
 }
 
 - (void)loadData
 {
-    [DataRequest getIlluminationDataWithParams:nil success:^(IlluminationModel *illu) {
-        if (illu) {
+    [DataRequest getFarmingDataWithParams:nil success:^(FarmingDataModel *farm) {
+        if (farm) {
             //光照数据加入farmingDatas
-            NSArray *items = illu.illitems;
+            NSArray *items = farm.illitems;
             NSMutableArray *lows = [NSMutableArray arrayWithCapacity:1];
             NSMutableArray *highs = [NSMutableArray arrayWithCapacity:1];
-            for (IlluminationItem *item in items) {
+            NSMutableArray *shidus = [NSMutableArray arrayWithCapacity:1];
+
+            for (FDataItemModel *item in items) {
                 [lows addObject:@{@"x":item.date,@"y":item.lowwendu}];
                 [highs addObject:@{@"x":item.date,@"y":item.highwendu}];
+                [shidus addObject:@{@"x":item.date,@"y":item.shidu}];
             }
-            [_illuDatas addObject:lows];
-            [_illuDatas addObject:highs];
+            [_illuDatas addObject:@{@"points":lows}];
+            [_illuDatas addObject:@{@"points":highs}];
             [_farmingDatas addObject:@{@"items":_illuDatas}];
-            //刷新tableview
-            [self.tableView reloadData];
-        }
-    } failure:^(StatusModel *status) {
-        
-    }];
-    
-    
-    [DataRequest getHumidityDataWithParams:nil success:^(HumidityModel *humidity) {
-        if (humidity){
-            //湿度数据加入farmingDatas
+            [_humiDatas addObject:@{@"points":shidus}];
+            [_farmingDatas addObject:@{@"items":_humiDatas}];
             
             //刷新tableview
             [self.tableView reloadData];
@@ -94,7 +91,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [_farmingDatas count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -111,6 +108,13 @@
         [chartView removeFromSuperview];
     }
     ChartViewDataSource *dataSource = [ChartViewDataSource dataSourceWithDictionary:[_farmingDatas objectAtIndex:indexPath.section]];
+    if (indexPath.section == 0) {
+        dataSource.chartRange = CGRangeMake(50, -20);
+        dataSource.chartHighlightRange = CGRangeMake(40, -10);
+    }else{
+        dataSource.chartRange = CGRangeMake(100, 0);
+        dataSource.chartHighlightRange = CGRangeMake(75, 25);
+    }
     chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
                                    dataSource:dataSource
                                         style:UUChartStyleLine];
@@ -118,53 +122,8 @@
     [chartView showInView:cell.contentView];
     
     UILabel *titleLabel = [cell viewWithTag:2];
-    titleLabel.text = indexPath.section == 0 ? @"光照数据":@"湿度数据";
+    titleLabel.text = indexPath.section == 0 ? @"温度数据(℃)":@"湿度数据(%)";
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

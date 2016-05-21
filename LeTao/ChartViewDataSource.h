@@ -12,6 +12,10 @@
 @interface ChartViewDataSource : NSObject<UUChartDataSource>
 
 @property (nonatomic,strong)NSDictionary *dictionary;
+
+@property(nonatomic,assign) CGRange chartRange;
+@property(nonatomic,assign) CGRange chartHighlightRange;
+
 /*
  {"items":["points":[{"x":"0","y":"34"},{"x":"1","y":"56"},{"x":"2","y":"32"},
             {"x":"3","y":"54"},{"x":"4","y":"13"},{"x":"5","y":"67"},
@@ -26,5 +30,6 @@
  */
 
 +(instancetype)dataSourceWithDictionary:(NSDictionary*)dict;
+
 
 @end
