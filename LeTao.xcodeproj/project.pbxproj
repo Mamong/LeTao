@@ -29,6 +29,9 @@
 		0415D3A21CB7C7DC003B1985 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415D3A11CB7C7DC003B1985 /* AccountViewController.m */; };
 		04744C411CF05C7B0077ECDD /* FDataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04744C401CF05C7B0077ECDD /* FDataItemModel.m */; };
 		04744C441CF05F2F0077ECDD /* FarmingDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04744C431CF05F2F0077ECDD /* FarmingDataModel.m */; };
+		04744C491CF06B720077ECDD /* ActivityRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04744C481CF06B720077ECDD /* ActivityRequest.m */; };
+		04744C4C1CF06BC50077ECDD /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04744C4B1CF06BC50077ECDD /* ActivityModel.m */; };
+		04744C501CF06C080077ECDD /* ActivityItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04744C4F1CF06C080077ECDD /* ActivityItemModel.m */; };
 		048B5C6D1CDF085B00960FC6 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C6C1CDF085B00960FC6 /* DataRequest.m */; };
 		048B5C751CDF0AC000960FC6 /* StatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C741CDF0AC000960FC6 /* StatusModel.m */; };
 		048B5C7C1CDF0ECD00960FC6 /* LTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B5C7B1CDF0ECD00960FC6 /* LTNetworkManager.m */; };
@@ -91,6 +94,12 @@
 		04744C401CF05C7B0077ECDD /* FDataItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDataItemModel.m; sourceTree = "<group>"; };
 		04744C421CF05F2F0077ECDD /* FarmingDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmingDataModel.h; sourceTree = "<group>"; };
 		04744C431CF05F2F0077ECDD /* FarmingDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmingDataModel.m; sourceTree = "<group>"; };
+		04744C471CF06B720077ECDD /* ActivityRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityRequest.h; sourceTree = "<group>"; };
+		04744C481CF06B720077ECDD /* ActivityRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityRequest.m; sourceTree = "<group>"; };
+		04744C4A1CF06BC50077ECDD /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
+		04744C4B1CF06BC50077ECDD /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
+		04744C4E1CF06C080077ECDD /* ActivityItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityItemModel.h; sourceTree = "<group>"; };
+		04744C4F1CF06C080077ECDD /* ActivityItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityItemModel.m; sourceTree = "<group>"; };
 		048B5C6B1CDF085B00960FC6 /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
 		048B5C6C1CDF085B00960FC6 /* DataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRequest.m; sourceTree = "<group>"; };
 		048B5C731CDF0AC000960FC6 /* StatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusModel.h; sourceTree = "<group>"; };
@@ -243,6 +252,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		04744C451CF06A970077ECDD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				040C9C311CBA3680006BDA83 /* FarmingActivityController.h */,
+				040C9C321CBA3680006BDA83 /* FarmingActivityController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		04744C461CF06AAA0077ECDD /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				04744C471CF06B720077ECDD /* ActivityRequest.h */,
+				04744C481CF06B720077ECDD /* ActivityRequest.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		04744C4D1CF06BCD0077ECDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04744C4A1CF06BC50077ECDD /* ActivityModel.h */,
+				04744C4B1CF06BC50077ECDD /* ActivityModel.m */,
+				04744C4E1CF06C080077ECDD /* ActivityItemModel.h */,
+				04744C4F1CF06C080077ECDD /* ActivityItemModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		048B5C611CDF054F00960FC6 /* modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,8 +326,9 @@
 		048B5C651CDF063100960FC6 /* FarmingActivity */ = {
 			isa = PBXGroup;
 			children = (
-				040C9C311CBA3680006BDA83 /* FarmingActivityController.h */,
-				040C9C321CBA3680006BDA83 /* FarmingActivityController.m */,
+				04744C4D1CF06BCD0077ECDD /* Model */,
+				04744C461CF06AAA0077ECDD /* Request */,
+				04744C451CF06A970077ECDD /* Controller */,
 			);
 			name = FarmingActivity;
 			sourceTree = "<group>";
@@ -534,6 +573,7 @@
 				04744C411CF05C7B0077ECDD /* FDataItemModel.m in Sources */,
 				0415D3881CB7C473003B1985 /* main.m in Sources */,
 				04E554C71CB92D35001060B7 /* ProductDetailViewController.m in Sources */,
+				04744C501CF06C080077ECDD /* ActivityItemModel.m in Sources */,
 				040C9C291CBA018C006BDA83 /* ChartViewDataSource.m in Sources */,
 				04E0BD311CBB2F7900675AD8 /* AVPlayerDemoPlaybackViewController.m in Sources */,
 				040C9C1D1CB9FA81006BDA83 /* UUBar.m in Sources */,
@@ -544,8 +584,10 @@
 				040C9C2F1CBA34A1006BDA83 /* SCGridTable.m in Sources */,
 				04E554BA1CB8AEE2001060B7 /* ZDDStepper.m in Sources */,
 				048B5C751CDF0AC000960FC6 /* StatusModel.m in Sources */,
+				04744C491CF06B720077ECDD /* ActivityRequest.m in Sources */,
 				048B5C6D1CDF085B00960FC6 /* DataRequest.m in Sources */,
 				040C9C251CB9FAF8006BDA83 /* FarmingDataViewController.m in Sources */,
+				04744C4C1CF06BC50077ECDD /* ActivityModel.m in Sources */,
 				04744C441CF05F2F0077ECDD /* FarmingDataModel.m in Sources */,
 				040C9C1E1CB9FA81006BDA83 /* UUBarChart.m in Sources */,
 				0415D3A21CB7C7DC003B1985 /* AccountViewController.m in Sources */,

@@ -7,9 +7,10 @@
 //
 
 #import "FarmingActivityController.h"
+#import "ActivityRequest.h"
 
 @interface FarmingActivityController ()
-
+@property (nonatomic, strong)NSMutableArray *datas;
 @end
 
 @implementation FarmingActivityController
@@ -21,20 +22,43 @@
     NSArray *header = @[@"活动项目", @"活动内容", @"时间", @"备注"];
     NSArray *ratio = @[@(0.2), @(0.2), @(0.2), @(0.4)];
     
-    self.vinda = [[SCGridTable alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-64) header:header data:[self getTestData1] ratio:ratio];
+    self.vinda = [[SCGridTable alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-64) header:header data:nil ratio:ratio];
     self.vinda.delegate = self;
     [self.theScrollView addSubview:self.vinda];
-    
-    [self performSelector:@selector(refreshTest) withObject:self];
-    [self performSelector:@selector(extendWidthTest) withObject:self];
-    
-    //[self initData];
+        
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)initData
+{
+    _datas = [NSMutableArray arrayWithCapacity:3];
+    [self loadData];
+}
+
+- (void)loadData
+{
+    [ActivityRequest getActivityDataWithParams:nil success:^(ActivityModel *act) {
+        if (act) {
+            //光照数据加入farmingDatas
+            NSArray *items = act.record;
+            
+            for (ActivityItemModel *item in items) {
+                [_datas addObject:@[item.acid,item.actype,item.accontent?item.accontent:@"",item.actime]];
+            }
+            
+            //刷新tableview
+            [self refreshGrid];
+        }
+    } failure:^(StatusModel *status) {
+        
+    }];
+}
+
 
 
 #pragma - SCGridTable Delegate
@@ -43,41 +67,11 @@
     NSLog(@"SCGridTable: %@", text);
 }
 
-#pragma - Test Data
-
-- (NSArray *)getTestData1 {
-    NSMutableArray *test = [[NSMutableArray alloc] init];
-    [test addObject:@[@"lily", @"165cm", @"53kg", @"修改于2016-02-13,by marco"]];
-    [test addObject:@[@"Bob", @"173cm", @"72kg", @"2016-01-02"]];
-    return [test copy];
-}
-
-- (NSArray *)getTestData2 {
-    NSMutableArray *test = [[NSMutableArray alloc] init];
-    [test addObject:@[@"lily", @"165cm", @"53kg", @"修改于2016-02-13,by marco"]];
-    [test addObject:@[@"Bob", @"173cm", @"72kg", @"2016-01-02"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-    [test addObject:@[@"John", @"180cm", @"67kg", @"2015-11-23"]];
-
-    return [test copy];
-}
 
 #pragma - Test Refresh
 
-- (void)refreshTest {
-    [self.vinda refreshWithData:[self getTestData2]];
+- (void)refreshGrid {
+    [self.vinda refreshWithData:self.datas];
 }
 
 #pragma - Test Extend Width
